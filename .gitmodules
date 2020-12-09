@@ -1,0 +1,6 @@
+[submodule "ic-product"]
+	path = ic-product
+	url = git@github.com:nguyentruongtuan/ic-product.git
+[submodule "ic-api"]
+	path = ic-api
+	url = git@github.com:nguyentruongtuan/ic-api.git

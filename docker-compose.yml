@@ -7,25 +7,29 @@ services:
       - "5672:5672"
     
   db:
-    image: mysql:8.0.21
+    image: mysql:5.7.32
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 123123
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 123123
       MYSQL_DATABASE: icommerce
 
   product:
     depends_on:
       - rabittmq
       - db
-    build: ./product
+    build: ./ic-product
     environment:
       NODE_ENV: development
       RMQ_ENDPOINT: rabittmq
       RMQ_PORT: 5672
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: 123123
+      DB_DATABASE: "icommerce"
     links:
       - "db"
       - "rabittmq"
@@ -34,7 +38,7 @@ services:
     depends_on:
       - rabittmq
       - product
-    build: ./api
+    build: ./ic-api
     environment:
       NODE_ENV: development
       RMQ_ENDPOINT: rabittmq
