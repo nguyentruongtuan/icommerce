@@ -12,6 +12,8 @@ services:
     restart: always
     ports:
       - "3306:3306"
+    volumes:
+      - ./icommerce.sql:/docker-entrypoint-initdb.d/database.sql
     environment:
       MYSQL_ROOT_PASSWORD: 123123
       MYSQL_DATABASE: icommerce
