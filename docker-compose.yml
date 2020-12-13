@@ -35,18 +35,27 @@ services:
     links:
       - "db"
       - "rabittmq"
+      
+  logger:
+    depends_on:
+      - rabittmq
+    build: ./ic-logger
+    environment:
+      NODE_ENV: development
+      RMQ_ENDPOINT: rabittmq
+      RMQ_PORT: 5672
+    links:
+      - "rabittmq"
 
   api:
     depends_on:
       - rabittmq
-      - product
     build: ./ic-api
     environment:
       NODE_ENV: development
       RMQ_ENDPOINT: rabittmq
       RMQ_PORT: 5672
     links:
-      - "db"
       - "rabittmq"
     ports:
       - "3000:3000"
