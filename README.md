@@ -1,3 +1,18 @@
+A micro application with one table in database.
+
+### APIs
+- GET /products
+  + branch: query string param to filter products by branch 
+  + name: query string param to filter products by name, using search mysql full text 
+  + maxPrice/minPrice: query string param to filter products by price 
+  + sortBy: sort result with given field 
+  + sortDirection: ASC|DESC sort result with given direction 
+- GET /products/:id
+
+### Database schema
+![Database schema](./icommerceSchema.png)
+
+
 ## Requirements
 ### Tools
 - docker
@@ -7,8 +22,18 @@
 - linux
 - MacOS
 
+### Libraries / Services
+- NestJS framework
+- Mysql database
+- typeorm 
+- RabbitMQ
+
+### Design pattern
+- Composite pattern
+- Clean Architect pattern
+
 ## App flow
-![image info](./icommerce.png)
+![Architecture flow](./icommerce.png)
 
 ## Install app
 
@@ -22,7 +47,7 @@ Then cd to folder icommerce and run
 docker-compose up -d
 ```
 
-Then just wait for docker build
+Then just wait for docker finish the build
 
 
 ## Testing
