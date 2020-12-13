@@ -4,3 +4,6 @@
 [submodule "ic-api"]
 	path = ic-api
 	url = git@github.com:nguyentruongtuan/ic-api.git
+[submodule "ic-logger"]
+	path = ic-logger
+	url = git@github.com:nguyentruongtuan/ic-logger.git
